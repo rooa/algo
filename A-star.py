@@ -11,7 +11,7 @@ The maze is provided below.
  ************** ***********
  *                        *
  ** ***********************
- *      *             *G  *
+ *      *              G  *
  *  *  **  *********** *  *
  *    *        ******* *  *
  *       *                *
@@ -31,7 +31,7 @@ maze = [[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
         [1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1],
         [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
         [1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
-        [1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,2,0,0,1],
+        [1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,1],
         [1,0,0,1,0,0,1,1,0,0,1,1,1,1,1,1,1,1,1,1,1,0,1,0,0,1],
         [1,0,0,0,0,1,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,0,1,0,0,1],
         [1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
@@ -84,13 +84,13 @@ def adjacent(node):
     return cand
 
 def h(n,g):
-    """ heuristics. This time NOT the euclidean distance  """
+    """ heuristics. This time sum of differences of each axes """
     return abs(g.x - n.x) + abs(g.y - n.y)
 
 
 if __name__ == "__main__":
-    op = []
-    cl = []
+    op = []                             # to be parsed
+    cl = []                             # already explored
 
     # Goal node
     goal = Node(8,22)
@@ -120,7 +120,8 @@ if __name__ == "__main__":
             adj[i].g = node.g + 1
             adj[i].h = h(adj[i],goal)
             adj[i].updateCost()
-            # check if adj[i] is in op. and whether it is the shortest path
+            # check if adj[i] is in op, and whether it is the shortest path
+            # This procedure is taken place because there may be another path to n
             for n in op:
                 if adj[i] == n and n.f > adj[i].f:
                     # if so, update n in op with new F value and parent
