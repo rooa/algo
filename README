@@ -1,13 +1,4 @@
-Added Message: foo bar bazz
-
-
-
-
-
-
-
-
-Aim:
+##Aim
 
 -Bellman-Ford
 -Viterbi
@@ -18,6 +9,15 @@ Aim:
 -Logistic Regression
 ... and so on. (To be added)
 
-Graph Algorithms
-Searching Algorithms
-Machine Learning Algorithms
+###Graph Algorithms
+
+TODO
+
+
+###Searching Algorithms
+
+TODO
+
+###Machine Learning Algorithms
+
+TODO
