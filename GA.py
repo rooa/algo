@@ -10,10 +10,12 @@ class Point():
     def __init__(self,x,y):
         self.x = x
         self.y = y
-    
+
     def distance(self, op):
         return sqrt((self.x - op.x)**2 + (self.y - op.y)**2)
-   
+
+
+
 points = [Point(random(),random()) for i in range(L)]
 
 class Gene():
@@ -73,7 +75,7 @@ class GeneticAlgorithm():
         #print self.genes
         self.scores = {}
         self.updateScores()
-        
+
     def updateScores(self):
         self.scores = {}
         for i in range(len(self.genes)):
@@ -98,7 +100,7 @@ class GeneticAlgorithm():
                     break
             if len(children) > self.population/2:
                 break
-            
+
 
         self.genes = self.genes + children
         #print children
@@ -127,14 +129,14 @@ class GeneticAlgorithm():
                     break
             if len(children) > self.population/2:
                 break
-            
+
 
         self.genes = self.genes + children
         #print children
         self.updateScores()
-            
-        
-        
+
+
+
     def crossOver_order(self,div):
         parents = {}
         temp = self.scores.copy()
@@ -161,7 +163,7 @@ class GeneticAlgorithm():
                     g1temp.remove(g2[:div][i])
                 g1 = g1[:div] + g2temp
                 g2 = g2[:div] + g1temp
-                
+
                 g1 = cityToGene(g1)
                 g2 = cityToGene(g2)
                 if not g1 in children:
@@ -172,13 +174,13 @@ class GeneticAlgorithm():
                     break
             if len(children) > self.population/2:
                 break
-            
+
 
         self.genes = self.genes + children
         #print children
         self.updateScores()
 
-        
+
     def selection(self):
         selected = []
         temp = self.scores.copy()
@@ -190,12 +192,12 @@ class GeneticAlgorithm():
         self.genes = selected
         self.updateScores()
 
-        
-                    
+
+
     def mutation_switch(self,p):
         if p < 0.1:
             pass
-            
+
     def mutation_reverse(self):
         #import ipdb; ipdb.set_trace();
         for i in range(5):
@@ -244,7 +246,7 @@ class GeneticAlgorithm():
         self.updateScores()
         print "mutated"
 
-        
+
     def bestScore(self):
         min_ = min(self.scores.keys())
         return min_
@@ -260,11 +262,11 @@ def visualize(points_, path):
         pyplot.plot([points_[p1].x,points_[p2].x],[points_[p1].y,points_[p2].y],"b-")
 
 
-    #pyplot.axis([0,1,0,1])    
+    #pyplot.axis([0,1,0,1])
     pyplot.show()
 
 
-    
+
 
 def solve():
     solver = GeneticAlgorithm(200)
@@ -287,7 +289,7 @@ def solve():
     print b ,"->", solver.bestScore()
 
     print
-    
+
     for i in range(len(points)):
         print points[i].x, points[i].y
 
@@ -295,8 +297,7 @@ def solve():
 
     for i in geneToCity(solver.scores[solver.bestScore()]):
         print i, "->",
-        
+
     print
 
     visualize(points, geneToCity(solver.scores[solver.bestScore()]))
-    
