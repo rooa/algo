@@ -1,3 +1,4 @@
+
 """
 Calculates the nDCG value of a set of document.
 nDCG is an abbreviation for "normalized Discounted Cumulative Gain".
@@ -42,4 +43,4 @@ def nDCG(prop,gain,ranked_list,n):
 
 
 if __name__ == '__main__':
-	print nDCG(proportion,Gain,retrieved_b, n)
+	print nDCG(proportion,Gain,retrieved_a, n)
