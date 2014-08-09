@@ -1,7 +1,0 @@
-class StackByQueue():
-    def __init__(self):
-        """
-        initialize Stack
-        """
-        self.stack = 
-        
