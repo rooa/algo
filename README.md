@@ -7,6 +7,7 @@
 -Neural Network
 -SVM
 -Logistic Regression
+
 ... and so on. (To be added)
 
 ###Graph Algorithms
