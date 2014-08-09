@@ -1,0 +1,7 @@
+class QueueByStack():
+    def __init__(self):
+        """
+        initialize Queue with List(serving as a stack).
+        """
+        self.stack = []
+        

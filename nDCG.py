@@ -36,11 +36,13 @@ def nDCG(prop,gain,ranked_list,n):
 		for i in range(j):
 			total_doc += 1
 			if total_doc > n:
-				print "numerator",num
-				print "denominator",denom
-				return num / denom
+				print
+				print "numerator: ",num
+				print "denominator: ",denom
+				print "nDCG: ", (num / denom)
+				return
 			denom += gain[k] / log((total_doc) + 1)
 
 
 if __name__ == '__main__':
-	print nDCG(proportion,Gain,retrieved_a, n)
+	nDCG(proportion,Gain,retrieved_a, n)
